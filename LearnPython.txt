@@ -1,0 +1,63 @@
+01  Socratica - Learn Python with Socratica 1:03
+
+  Intro to course.
+
+02  Socratica - Hello World in Python 2:47
+
+  Install Python
+  Check for python / go to python.org
+  Use the interpreter to run print("Hello World")
+  Use quit() to exit interpreter
+  Create a python file, ending in .py
+  Save print("hello world")
+  Run file
+
+03  Socratica - Python Strings
+
+  Make strings in three different ways
+  01. Create a string and store it in a variable.
+    message = "Meet me tonight."
+  02. Create another string using single quotes.
+    message2 = 'The clock strikes 12 at midnight'
+
+  Use escape sequence \' to include single quotes in a string
+
+  03. Complex strings that contain single and double quotes can be made using triple double quotes.
+    movie_quote = """One of my favourite lines from the Godfather is:
+      "I'm going to make him an offer he can't refuse."
+      Do you know this?"""
+
+04. Socratica - Numbers in Python 2
+
+  Four types:
+  01. int
+  02. long
+  03. float
+  04. Complex
+
+  Use the # sign for comments
+  Use the type() function to determine the type.
+  Use import sys to load system functions
+
+05. Socratica - Numbers in Python Version 3
+
+  Three types:
+    01. int
+    02. float
+    03. complex
+
+07. Socratica - Arithmetic in Python Version 3
+
+  Types: int, float, complex
+  Operations: + - * /
+  Special Operators: // %
+
+  cast with int(), float() or complex()
+
+08. Socratica - Interactive Help
+
+  The dir() function shows the list of available functions
+  __builtins__ module contains default functions
+
+  help() function is used to get info about other functions
+    e.g. help(pow)

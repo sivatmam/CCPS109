@@ -1,0 +1,74 @@
+Midterm Feb 26@ 1830hrs
+Cheat Sheet - Single Sided 8 1/2 x 11
+50% - multiple choice
+50% - short answer
+Read code, find errors
+
+Compound Data Types
+  Lists
+  Tuples
+
+  Tuples
+    - an ordered sequence of elements, can mix element types
+    - cannot change element values, immutable
+    - use with parentheses ()
+
+    te = ()     #empty typle
+    t = (7, "Hi", 23)
+    t[0]        # equals 7
+    t2=(7,"Hi",23)+(5,6)  #t2=(7,"Hi",23,5,6)
+
+    slices return a new object
+    t[1:2] -> ("Hi",)  # the comma indicates that it is a Tuples
+
+  Tuple Assignment
+
+    b = ("Bob", 19, "CS")     # tuple packing
+    (name, age, studies) = b  # tuple unpacking
+
+    print(name)               # Bob
+    print(age)                # 19
+
+  Tuple Swap
+
+    - conveniently used to swap variable values
+
+    # won't work
+    x = y
+    y = x
+
+    # will work
+    temp = x
+    x = y
+    y = temp
+
+    # will work with Tuples
+    (x, y) = (y, x)
+
+  Using Tuples
+
+    def quotient_and_rem(x, y):
+      q = x // y
+      r = x % y
+      return (q, r)
+
+  Lists
+
+    Object stored data in ordered sequence and accessible by index
+      - list is denoted by square brackets, []
+      - a list contains elements
+      - a list may be heterogeneous or homogeneous
+
+    L = []  # create an empty list
+    L = [2, 'a', 4, [1,2]]  # a heterogeneous list with the 4th element being another list
+    len(L)  # equals 4
+    L[0]    # 2
+
+      - Lists are mutable
+      - assigning to a new element at an index changes the value
+      L = [2, 1, 3]
+      L[1] = 5
+      
+
+
+Modules / Code in different files
