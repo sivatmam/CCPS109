@@ -1,0 +1,133 @@
+
+
+Last time
+
+List, Module and File I/O
+
+This time
+
+Mutation, Aliasing, Cloning
+
+http://www.pythontutor.com/
+
+List in Memory
+  - lists are mutable
+  - behave differently than immutable types
+  - is an object in memory
+  - variable name points to object
+  - any variable pointing to that object is affected
+  - key phrase to keep in mind when working with lists is side effects
+
+Alias
+  - hot is an alias for warm - changing one changes the other!
+    a = 1
+    b = a 
+    print(a)
+    print(b)
+
+    warm = ['red', 'yellow', 'orange']
+    hot = warm
+    hot.append('pink')
+    print(hot)
+    print(warm)
+
+Cloning
+  - create a new list and copy every element using 
+  chill = cool[:]
+
+Sorting lists
+  - calling sort() mutates the list and returns nothing
+  - calling sorted() does not mutate the list, must assign result to a new variable
+
+
+Mutation and Iteration
+  - avoid mutating a list as ou are iterating over iterating
+
+  def remove_dups(L1, L2):
+    for e in L1
+      if e in L2:
+        L1.remove(e)
+
+  L1 = [1, 2, 3, 4]
+  L2 = [1, 2, 5, 6]
+
+  - result L1 is [2, 3, 4]
+  - python uses an internal counter to keep track of index it is in the loop
+  - mutating changes the list length but Python doesn't update the counter
+  - loop never sees element 2
+
+  def remove_dups(L1, L2):
+    L1_copy = L1[:]
+    for e in L1_copy:
+      if e in L2:
+        L1.remove(e)
+
+Dictionary
+  - collection of unordered data values in a  key:value pair structure.
+  - uses {}
+  - 'comma' for item separation
+  - Keys are unique and immutable
+  - Data values may be of any datatype and be duplicate
+    - can be lists, another dictionary
+
+grades = {'Ana':'B', 'John':'A+', 'Denise':'A', 'Katy':'A'}
+my_dict = {}  # empty dictionary
+
+Dictionary Lookup
+  - similar to indexing into a list
+  - looks up the key
+  - returns the value assoicated with the key
+  - if key isn't found, get an error
+
+  grades['John']      # evaluates to 'A+'
+  grades['Sylvan']    # evaluates to KeyError
+
+  - add an entry
+  grades['Sylvan'] = 'A'
+
+  - test if key in dictionary
+  'John' in grades    returns True
+  'Daniel' in grades  returns False
+
+  - delete entry
+  del(grades['Ana'])
+
+  - iterable that acts like a tuple of all Keys
+  grades.keys() - return ('Denise', 'Katy', 'John', 'Ana')
+
+  - iterable that acts like a tuple of all values
+  grades.values() - return ('A', 'A', 'A+', 'B')
+
+  - Get method: return the value associated with a key
+  grades.get('Katy')
+
+  - Pop a value from a dictionary
+  grades.pop('Katy')
+
+  myfamily = {
+    "child1" = {
+      "name" : "Emil",
+      "year" : 2004
+    },
+    "child2" = {
+      "name" : "Tobias",
+      "year" : 2007
+    },
+    "child3" = {
+      "name" : "Linus",
+      "year" : 2011
+    }
+
+  }
+
+
+Dictionary constructor method
+
+dict()
+w=dict([(1,4139),('guido',4127),('jack',4098)])
+x=dict(sape=1234, guido=4127, jack=4098)
+
+- To iterate through a dictionary
+
+for k, v in newdict.items():
+  print(k,v)
