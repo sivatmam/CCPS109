@@ -99,3 +99,46 @@ def is_ascending(items):
     return True
 
 
+"""
+Riffle 
+ 
+def riffle(items, out = True): 
+
+Given a list of ​items that is guaranteed to contain an even number of elements (note that the
+integer zero is an even number), create and return a list produced by performing a perfect ​riffle to
+the ​items​ by interleaving the items of the two halves of the list in an alternating fashion. 
+
+When performing a perfect riffle, also known as the ​Faro shuffle​, the list of​ items is split in two
+equal sized halves, either conceptually or in actuality. The first two elements of the result are then
+the first elements of those halves. The next two elements of the result are the second elements of
+those halves, followed by the third elements of those halves, and so on up to the last elements of
+those halves. The parameter ​out determines whether this function performs an​ out shuffle or an​ in
+shuffle​, that is, from which half of the list the alternating card is taken first. 
+ 
+items                     out     Expected result 
+[1, 2, 3, 4, 5, 6, 7, 8]  True    [1, 5, 2, 6, 3, 7, 4, 8] 
+[1, 2, 3, 4, 5, 6, 7, 8]  False   [5, 1, 6, 2, 7, 3, 8, 4] 
+[]                        True    [] 
+['bob', 'jack']           True    ['bob', 'jack'] 
+['bob', 'jack']           False   ['jack', 'bob']  
+"""
+
+def riffle(items, out = True):
+  items_halflength = int(len(items) / 2)
+  first_half = items[:items_halflength]
+  second_half = items[items_halflength:]
+
+  riffled_items = []
+  
+  for index in range(items_halflength):
+    if out:
+      riffled_items.append(first_half[index])
+      riffled_items.append(second_half[index])
+    else:
+      riffled_items.append(second_half[index]) 
+      riffled_items.append(first_half[index])
+
+  return riffled_items     
+  
+
+
