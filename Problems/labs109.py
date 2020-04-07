@@ -151,14 +151,16 @@ when it is written out. Return ​True if this is the case, and ​False otherwi
 question is not asking whether the number ​n itself is odd or even. You therefore will have to 
 look at every digit of the given number before you can claim that the number contains no odd digits. 
  
-Hint: to extract the lowest digit of a positive integer ​n​, use the expression​n % 10​. To extract all                    other digits except the lowest one, use the expression ​n // 10​. Or, if you don't want to be this                    fancy, first convert the number into a string and work there.  
+Hint: to extract the lowest digit of a positive integer ​n​, use the expression​n % 10​. 
+To extract all other digits except the lowest one, use the expression ​n // 10​. 
+Or, if you don't want to be this fancy, first convert the number into a string and work there.  
  
-n Expected result 
-8 False 
-1357975313579 True 
-42 False 
-71358 False 
-0 False   
+n               Expected result 
+8               False 
+1357975313579   True 
+42              False 
+71358           False 
+0               False   
 """
 
 def only_odd_digits(n):
@@ -167,4 +169,49 @@ def only_odd_digits(n):
     if int(index) % 2 == 0:
       return False
   return True
+"""
+# Implemented using floor division and modulus of 10
+# Runs the test 0.001s slower than the string iteration function above
 
+def only_odd_digits(n):
+    while n > 0:
+        if (n%10)%2 == 0:
+            return False
+        n = n // 10
+    return True
+"""
+
+
+"""
+Blocks in pyramid 
+ 
+def pyramid_blocks(n, m, h): 
+
+A pyramid structure (although here in the ​ancient Meso-american than the more famous ancient 
+Egyptian style) is built from layers, each layer consisting of a rectangle of identical cubic blocks. 
+The top layer of the pyramid consists of ​n rows and ​m columns of such blocks. The layer immediately 
+below each layer contains one more row and one more column, all the way to the bottom layer of 
+the pyramid. If the entire pyramid consists of ​h such layers, how many blocks does this pyramid 
+contain in total? 
+ 
+Here you can solve this problem in a straight forward fashion by simply looping through the​ h layers 
+and adding up all the blocks along the way in each layer. However, if you happen to know some 
+discrete math and combinatorics, you can come up with an analytical closed form formula for the 
+result and compute the answers much faster that way. (There is an important general principle in 
+this for you to ponder later on your own.) 
+ 
+n     m     h     Expected result 
+2     3     1     6 
+2     3     10    570 
+10    11    12    3212 
+100   100   100   2318350 
+10**6 10**6 10**6 2333331833333500000 
+
+summation of  n+h-1 * m+h-1
+"""
+
+def pyramid_blocks(n,m,h):
+  total = 0
+  for index in range(h):
+    total += (n+index)*(m+index)
+  return total
