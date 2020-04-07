@@ -1,4 +1,4 @@
-
+import math
 
 """
 Ryerson letter grade  
@@ -215,3 +215,51 @@ def pyramid_blocks(n,m,h):
   for index in range(h):
     total += (n+index)*(m+index)
   return total
+
+
+"""
+Cyclops numbers 
+ 
+def is_cyclops(n): 
+
+A non-negative integer is said to be a​ cyclops number if it consists of an odd number of digits so
+that the middle (or more poetically, the"eye") digit is a zero, and all other digits of that number are
+non-zero. This function should determine whether its parameter integer​ n is a cyclops number, and
+accordingly return either ​True​ or ​False​. 
+ 
+n           Expected result 
+0           True 
+101         True 
+98053       True 
+777888999   False 
+1056        False 
+675409820   False 
+ 
+(As an extra challenge, try to solve this problem using only loops, conditions and integer arithmetic
+operations, without first converting the integer into a string and working from there. Note that
+dividing an integer by 10 effectively chops off its last digit, whereas the remainder operator ​% can
+be used to extract the last digit.)
+"""
+
+def is_cyclops(n):
+  if n == 0:
+    return True
+  
+  isCyclops = False
+  count = 0  
+  while n > 0:
+    remainder = n % 10
+    dividend = n // 10
+    
+    n = dividend  
+    count += 1
+    
+    digits_in_dividend = math.ceil(math.log(dividend+1, 10))
+    if ((count-1)==digits_in_dividend) and remainder==0:
+      isCyclops = True
+    elif ((count-1)!=digits_in_dividend) and remainder==0:
+      isCyclops = False
+      break
+  return isCyclops
+
+
