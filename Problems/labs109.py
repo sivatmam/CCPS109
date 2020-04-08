@@ -299,6 +299,47 @@ def domino_cycle(tiles):
       return False
 
 
+"""
+Count dominators 
+ 
+def count_dominators(items): 
 
+An element of ​items is said to be a ​dominator if every element to its right is strictly smaller than it. 
+This function should count how many elements in the given list of ​items are dominators, and 
+return that count. For example, in the list ​[42, 7, 12, 9, 2, 5]​, the elements 42, 12, 9 and 5 
+are dominators. By this definition, the last item of the list is automatically a dominator. 
+ 
+Before starting to write any code for this function, please read and think about the tale of "​Shlemiel 
+the painter​" and how this seemingly silly little tale from a far simpler time might relate to today's
+computational problems for lists, strings and other sequences. This problem will be the first of
+many that you will encounter during and after this course to illustrate the important principle of
+using only one loop to achieve in a tiny fraction of time the same end result that Shlemiel needs two
+nested full loops to achieve, your workload therefore increasing only ​linearly with respect to the
+number of ​items instead of ​quadratically (that is, as a function of the ​square of the number of
+items), the same way that Shlemiel's painting and running task will increase as the fence gets
+longer. 
+ 
+items                     Expected result 
+[42, 7, 12, 9, 2, 5]      4 
+[]                        0 
+[99]                      1 
+[42, 42, 42, 42]          1 
+list(range(10**7))        1 
+list(range(10**7, 0, -1)) 10000000   
+"""
+def count_dominators(items): 
+  
+  dominator = 0
+  if len(items) == 0:
+    return dominator 
 
+  max_item = items[-1]
+  dominator = 1
+
+  for index in range(len(items)-1,-1,-1):
+    if (index >= 1) and (items[index-1] > max_item):
+      max_item = items[index-1]
+      dominator += 1
+
+  return dominator    
 
