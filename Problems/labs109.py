@@ -262,4 +262,43 @@ def is_cyclops(n):
       break
   return isCyclops
 
+"""
+Domino cycle 
+ 
+def domino_cycle(tiles): 
+
+A single ​domino tile is represented as a two-tuple of its​ pip values​, for example​ (2, 5) or​ 
+(6, 6)​. This function should determine whether the given list of ​tiles forms a​ cycle so that each tile in 
+the list ends with the exact same pip value that its successor tile starts with, the success or of the last 
+tile being the first tile of the list since this is supposed to be a cycle instead of a chain. Return ​True if 
+the given list of domino tiles form such a cycle, and ​False​ otherwise. 
+ 
+tiles                       Expected result 
+[(3, 5), (5, 2), (2, 3)]    True 
+[(4, 4)]                    True 
+[]                          True 
+[(2, 6)]                    False 
+[(5, 2), (2, 3), (4, 5)]    False 
+[(4, 3), (3, 1)]            False 
+"""
+def domino_cycle(tiles): 
+  if len(tiles) == 0:
+    return True
+  
+  first_tile_pip = tiles[0][0]
+
+  for index in range(len(tiles)):
+    if index == len(tiles)-1:
+      if first_tile_pip == tiles[index][1]:
+        return True
+      else:
+        return False
+    if tiles[index][1] == tiles[index+1][0]:
+      continue
+    else:
+      return False
+
+
+
+
 
