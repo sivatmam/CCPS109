@@ -430,4 +430,54 @@ def words_with_letters(words, letters):
 
   return matchList
 
+"""
+Taxi zum zum 
+ 
+def taxi_zum_zum(moves): 
+
+A Manhattan taxicab starts at the origin point​(0, 0) of the two-dimensional integer grid, initially
+heading north. It then executes the given sequence of ​moves​, a string made up of characters​ 'L' ​for
+turning 90 degrees left (while standing in place), ​'R' for turning 90 degrees right (ditto), and '​F​' for
+moving one step forward according to its current heading. This function should return the final
+position of the taxicab in the integer grid coordinates of Manhattan. 
+ 
+moves                   Expected result 
+'RFRL'                  (1, 0) 
+'LLFLFLRLFR'            (1, 0) 
+'FR' * 1000             (0, 0) 
+'FFLLLFRLFLRFRLRRL'     (3, 2) 
+ 
+(As an aside, why do these problems always seem to take place in Manhattan instead of, say, Denver
+where the street grid is rotated 45 degrees from the main compass axes to equalize the amount of
+daily sunlight on streets of both orientations? That should make an interesting variation to many
+problems of this spirit. Of course, diagonal moves always maintain the parity of the coordinates,
+which makes it impossible to reach any coordinates of the opposite parity, quite like in that old joke
+with the punchline "Gee... I don't think that you can get there from here.")    
+"""
+
+def taxi_zum_zum(moves): 
+  totalheading = 0
+  posx = 0
+  posy = 0
+  for move in moves:
+    if move == "R":
+      totalheading += 90
+    elif move == "L":
+      totalheading -= 90
+    elif move == "F":
+      heading = totalheading % 360
+      if heading < 0:
+        heading = 360 - heading
+
+      if heading == 0:
+        posy += 1
+      elif heading == 90:
+        posx += 1
+      elif heading == 180:
+        posy -= 1
+      elif heading == 270:
+        posx -= 1
+
+  return (posx, posy)
+
 
