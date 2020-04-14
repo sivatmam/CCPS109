@@ -386,3 +386,48 @@ def extract_increasing(digits):
       int_current_biggest = int_next_biggest
       str_next_biggest = ""
   return list_increasing
+
+"""
+Words that contain given letter sequence 
+ 
+def words_with_letters(words, letters): 
+
+Given a list of​ words sorted in alphabetical order, and a string of required ​letters​, find and return
+the list of precisely those words that contain the letters inside them in the exact order given, but not
+necessarily in consecutive positions. 
+ 
+letters           Expected result (using the wordlist ​words_sorted.txt​) 
+'antmneic'        ['antiferromagnetic', 'antimagnetic', 'antimnemonic', 
+                   'aquopentamminecobaltic', 'pantomnesic', 'phantasmogenetic'] 
+'unskit'          ['underskirt', 'underskirts', 'unshockability', 
+                   'unshrinkability', 'unsinkability', 'unskaithd', 'unskaithed', 
+                   'unskirted', 'unspeakability'] 
+'rupih'           ['frumpish', 'frumpishly', 'frumpishness', 'grumpish', 
+                   'grumpishness', 'porcupinish', 'rupiah', 'rupiahs', 
+                   'trumpetfish', 'trumpetfishes'] 
+'reeomy'          A list of 54 words, the first three of which are ​
+                  ['adrenalectomy', 'arteriectomy', 'arteriophlebotomy']​ 
+                  and the last three are 
+                  ['ureterotomy', 'urethrectomy', 'vertebrectomy']   
+
+"""
+
+def read_words(word_file):
+  wordList = [line.rstrip('\n') for line in open(word_file)]
+  return wordList
+
+def words_with_letters(words, letters): 
+  matchList = []
+  for word in words:
+    currentIndex = 0
+    for letterIndex in range(len(letters)):
+      if word.find(letters[letterIndex], currentIndex) > -1:
+          currentIndex = word.find(letters[letterIndex], currentIndex) + 1
+          if letterIndex == len(letters) - 1:
+            matchList.append(word)
+      else:
+        break
+
+  return matchList
+
+
