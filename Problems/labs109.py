@@ -480,4 +480,58 @@ def taxi_zum_zum(moves):
 
   return (posx, posy)
 
+"""
+Count growlers 
+ 
+def count_growlers(animals): 
 
+Let the strings ​'cat' and ​'dog' denote that kind of animal facing left, and ​'tac' and ​'god'
+denote that same kind of animal facing right. Each individual animal, regardless of its own species,
+growls if there are more dogs than cats following that position in the direction that the animal is
+facing. Given a list of such ​animals​, return the count of how many of them are growling. 
+ 
+animals                                                   Expected result 
+['cat', 'dog']                                            0 
+['god', 'cat', 'cat', 'tac', 'tac', 'dog', 'cat', 'god']  2 
+
+['dog', 'cat', 'dog', 'god', 'dog', 'god', 'dog', 'god',  11
+'dog', 'dog', 'god', 'god', 'cat', 'dog', 'god', 'cat', 
+'tac'] 
+ 
+['god', 'tac', 'tac', 'tac', 'tac', 'dog', 'dog', 'tac',  0
+'cat', 'dog', 'god', 'cat', 'dog', 'cat', 'cat', 'tac'] 
+ 
+ 
+(I admit that I was pretty high when I originally thought up this problem, at least high enough to
+perceive the letter 't' as a tail of a happy cat held up high, and 'd' as the snout and stand-up ears of a
+curious dog, perhaps some kind of spitz or a similar breed. Yeah, good luck trying to unsee that
+now. For some reason, this problem is somehow more tricky than it seems.)   
+"""
+def count_growlers(animals): 
+  growlers = 0
+  
+  for animalIndex in range(len(animals)):
+    if (animals[animalIndex] == "cat") or (animals[animalIndex] == "dog"):  # look left
+      countCats = 0
+      countDogs = 0
+      for subAI in range(0, animalIndex):
+        if (animals[subAI] == "cat") or (animals[subAI] == "tac"):
+          countCats +=1
+        elif (animals[subAI] == "dog") or (animals[subAI] == "god"):
+          countDogs +=1
+      if (countDogs > countCats):
+        growlers += 1    
+
+    elif (animals[animalIndex] == "tac") or (animals[animalIndex] == "god"): # look right
+      countCats = 0
+      countDogs = 0
+      for subAI in range(animalIndex+1, len(animals)):
+        if (animals[subAI] == "cat") or (animals[subAI] == "tac"):
+          countCats +=1
+        elif (animals[subAI] == "dog") or (animals[subAI] == "god"):
+          countDogs +=1
+      if (countDogs > countCats):
+        growlers += 1    
+
+  
+  return growlers
