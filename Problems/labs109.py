@@ -343,3 +343,46 @@ def count_dominators(items):
 
   return dominator    
 
+"""
+Extract increasing integers from digit string 
+ 
+def extract_increasing(digits): 
+ 
+Given a string of digits guaranteed to consist of ordinary integer digit characters 0 to 9 only, create 
+and return the list of increasing integers acquired from reading these digits in order. The first 
+integer in the result list is made up from the first digit of the string. After that, each element is an 
+integer that consists of as many following consecutive digits as are needed to make that integer 
+strictly larger than the previous integer. Any leftover digits at the end of the digit string that do not 
+together form a sufficiently large integer are discarded. 
+ 
+digits                              Expected result 
+'0'                                 [0] 
+'045349'                            [0, 4, 5, 34] 
+'77777777777777777777777'           [7, 77, 777, 7777, 77777, 777777] 
+'122333444455555666666'             [1, 2, 23, 33, 44, 445, 555, 566, 666] 
+'1234567890987654321'               [1, 2, 3, 4, 5, 6, 7, 8, 9, 98, 765, 4321] 
+'3141592653589793238462643          [3, 14, 15, 92, 653, 5897, 9323, 84626, 433832, 795028]
+383279502884' 
+ 
+'​2718281828459045235360287          [2, 7, 18, 28, 182, 845, 904, 5235, 36028,
+47135266249775724709369995          74713, 526624, 977572, 4709369, 9959574,
+95749669676277240766303535          96696762, 772407663, 3535475945, 7138217852,
+47594571382178525166427427          51664274274, 66391932003, 599218174135,
+46639193200305992181741359          966290435729] 
+6629043572900334295260​' 
+    
+'123456789' * 100                   A list that contains 75 elements, the last one of which equals 
+                                    34567891234567891234567891 
+""" 
+def extract_increasing(digits):
+  list_increasing = []
+  int_current_biggest = -1
+  str_next_biggest = ""
+  for index in range(len(digits)):
+    str_next_biggest = str_next_biggest + digits[index]
+    int_next_biggest = int(str_next_biggest)
+    if int_next_biggest > int_current_biggest:
+      list_increasing.append(int_next_biggest)
+      int_current_biggest = int_next_biggest
+      str_next_biggest = ""
+  return list_increasing
