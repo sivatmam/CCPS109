@@ -572,20 +572,21 @@ always reach the goal after at most ​k(​k-1)/2 iterations from any starting 
 def bulgarian_solitaire(piles, k): 
   flag = True
   count = 0
+  piles_copy = piles.copy()
   enum_list = [i for i in range(1, k+1)]
   while flag==True:
     for i in enum_list:
-      if i not in piles:
+      if i not in piles_copy:
         count += 1
         newpile = 0
         tempPiles = []
-        for pile in piles:
+        for pile in piles_copy:
           adjpile = pile - 1
           newpile += 1
           if adjpile > 0:
             tempPiles.append(adjpile)
         tempPiles.append(newpile)
-        piles = tempPiles
+        piles_copy = tempPiles
         break
       elif i >= len(enum_list):
         flag=False
