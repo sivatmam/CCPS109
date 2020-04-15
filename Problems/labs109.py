@@ -535,3 +535,59 @@ def count_growlers(animals):
 
   
   return growlers
+
+
+"""
+Bulgarian solitaire 
+ 
+def bulgarian_solitaire(piles, k): 
+
+You are given a row of ​piles of pebbles and a positive integer ​k so that the total number of pebbles
+in these piles equals ​k*(k+1)//2​, a formula that just so happens to equal the sum of all positive
+integers from ​1 to ​k​. As if a metaphor for the bleak life behind the Iron Curtain, all pebbles are
+identical and you don't have any choice in the moves that you make. Each move must pick up
+exactly one pebble from each pile (even if doing so makes that pile disappear), and create a new pile
+from these collected pebbles. For example, starting with ​piles = [7, 4, 2, 1, 1]​, the first
+move would turn this into ​[6, 3, 1, 5]​. The next move turns this into ​[5, 2, 4, 4]​, which
+then turns into ​[4, 1, 3, 3, 4]​, and so on.
+
+This function should count how many moves are needed to convert the given initial ​piles into
+some permutation of first ​k integers so that each number from ​1 to ​k appears as the size of ​exactly
+one pile in the current configuration, and return that count. (Note how once this goal state has
+been reached, the basic move does not change the configuration.) 
+ 
+piles                               k       Expected result 
+[1, 4, 3, 2]                        4       0 
+[8, 3, 3, 1]                        5       9 
+[10, 10, 10, 10, 10, 5]             10      74 
+[3000, 2050]                        100     7325 
+[2*i-1 for i in range(171, 0, -2)]  171     28418 
+
+(This problem was inspired by the old ​Martin Gardner column "Bulgarian Solitaire and Other
+Seemingly Endless Tasks" where it was used as an example of what we would here call a while-loop
+where it is not immediately obvious that the loop will ever reach its goal and get to terminate.
+However, clever combinatorial proof shows that this one simple move can never get stuck, but will
+always reach the goal after at most ​k(​k-1)/2 iterations from any starting configuration.) 
+"""  
+def bulgarian_solitaire(piles, k): 
+  flag = True
+  count = 0
+  enum_list = [i for i in range(1, k+1)]
+  while flag==True:
+    for i in enum_list:
+      if i not in piles:
+        count += 1
+        newpile = 0
+        tempPiles = []
+        for pile in piles:
+          adjpile = pile - 1
+          newpile += 1
+          if adjpile > 0:
+            tempPiles.append(adjpile)
+        tempPiles.append(newpile)
+        piles = tempPiles
+        break
+      elif i >= len(enum_list):
+        flag=False
+  return count
+
